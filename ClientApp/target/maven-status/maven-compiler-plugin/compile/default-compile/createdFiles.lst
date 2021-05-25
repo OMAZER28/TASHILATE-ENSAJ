@@ -1,0 +1,9 @@
+ma\ensaj\clientapp\repository\UserRepository.class
+ma\ensaj\clientapp\config\SecurityConfiguration.class
+ma\ensaj\clientapp\web\UserRegistrationController.class
+ma\ensaj\clientapp\web\dto\UserRegistrationDto.class
+ma\ensaj\clientapp\service\UserServiceImpl.class
+ma\ensaj\clientapp\web\MainController.class
+ma\ensaj\clientapp\service\UserService.class
+ma\ensaj\clientapp\model\User.class
+ma\ensaj\clientapp\model\Role.class

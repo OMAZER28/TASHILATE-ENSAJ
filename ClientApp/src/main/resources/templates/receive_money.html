@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+	<meta charset="ISO-8859-1">
+	<title>TASHILATE-ENSAJ</title>
+	<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" type="text/css">
+	<link rel="stylesheet" th:href="@{/css/custom.css}" type="text/css">
+</head>
+<body style="background-image: url('/img/bgimg.PNG')">
+	<nav class="navbar navbar-expand-lg navbar-light bg-light mb-4 shadow-sm ">
+		<a class="navbar-brand" th:href="@{/}">TASHILATE-ENSAJ</a>
+		<ul class="navbar-nav ml-auto">
+			<li class="nav-item">
+				<span sec:authentication="principal.username"> User</span>
+			</li>
+			<li sec:authorize="isAuthenticated()" class="nav-item ml-4 mr-4">
+				<a th:href="@{/logout}">Logout</a>
+			</li>
+		</ul>
+	</nav>
+	<div class="col-lg-4 formStyle p-4" id="form">
+		<h1> Receive Money </h1>
+		<div class="form-group">
+			<label for="code">The code of the transfer</label>: 
+			<input type="text" id="code" name="code" class="form-control" autofocus="autofocus" required/>
+		</div>
+		<div class="form-group">
+			<label for="cinReceiver">The CIN of the receiver </label> :
+			<input type="text" class="form-control" id="cinReceiver" name="cinReceiver" required>
+		</div>
+		<div class="form-group">
+			<button type="submit" name="receive" id="receive"	class="btn btn-outline-success btn-block mb-4" value="Receive">Receive</button>	
+		</div>
+		<div id="erreur">
+		</div>
+	</div>
+	<div class="col-lg-4 formStyle p-4 text-center" id="result" >
+	</div>
+	<script src="/js/jquery-3.3.1.min.js"></script>
+	<script src="/js/receive_money.js"></script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+	<meta charset="ISO-8859-1">
+	<title>TASHILATE-ENSAJ</title>
+	<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" type="text/css">
+	<link rel="stylesheet" th:href="@{/css/custom.css}" type="text/css">
+</head>
+<body style="background-image: url('/img/bgimg.PNG')">
+	<nav class="navbar navbar-expand-lg navbar-light bg-light mb-4 shadow-sm ">
+		<a class="navbar-brand" th:href="@{/}">TASHILATE-ENSAJ</a>
+		<ul class="navbar-nav ml-auto">
+			<li class="nav-item">
+				<span sec:authentication="principal.username"> User</span>
+			</li>
+			<li sec:authorize="isAuthenticated()" class="nav-item ml-4 mr-4">
+				<a th:href="@{/logout}">Logout</a>
+			</li>
+		</ul>
+	</nav>
+	<div class="col-lg-4 formStyle p-4" id="form">
+		<h1> W/E Payment </h1>
+		<div class="form-group">
+			<label for="contractNbr">The contract number</label>: 
+			<input type="text" id="contractNbr" name="contractNbr" class="form-control" autofocus="autofocus" required/>
+		</div>
+		<div class="form-group">
+			<label for="agency">The W/E provider </label> :
+            <select class="form-control" id="agency" name="agency">
+				<option selected value="LYDEC">LYDEC</option>
+				<option value="RADEEJ">RADEEJ</option>
+				<option value="REDAL">REDAL</option>
+				<option value="RADEEC">RADEEC</option>
+				<option value="RADEEO">RADEEO</option>
+				<option value="RADEET">RADEET</option>
+			</select>
+		</div>
+		<div class="form-group">
+			<button type="submit" name="search" id="search"	class="btn btn-outline-success btn-block mb-4" value="Search">Search</button>
+		</div>
+		<div id="erreur">
+		</div>		
+	</div>
+	<div class="col-lg-4 formStyle p-4 text-center" id="bills">
+	</div>
+	<div class="col-lg-4 formStyle p-4 text-center" id="result">
+		<img src="/img/success.png" height="200" width="200"/>
+		<h3 color="green">DONE SUCCESSFULLY!!</h3>
+	</div>
+	<script src="/js/jquery-3.3.1.min.js"></script>
+	<script src="/js/we_payment.js"></script>
+</body>
+</html>

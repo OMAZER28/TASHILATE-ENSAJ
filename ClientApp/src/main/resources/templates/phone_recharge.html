@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+	<meta charset="ISO-8859-1">
+	<title>TASHILATE-ENSAJ</title>
+	<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" type="text/css">
+	<link rel="stylesheet" th:href="@{/css/custom.css}" type="text/css">
+</head>
+<body style="background-image: url('/img/bgimg.PNG')">
+	<nav class="navbar navbar-expand-lg navbar-light bg-light mb-4 shadow-sm ">
+		<a class="navbar-brand" th:href="@{/}">TASHILATE-ENSAJ</a>
+		<ul class="navbar-nav ml-auto">
+			<li class="nav-item">
+				<span sec:authentication="principal.username"> User</span>
+			</li>
+			<li sec:authorize="isAuthenticated()" class="nav-item ml-4 mr-4">
+				<a th:href="@{/logout}">Logout</a>
+			</li>
+		</ul>
+	</nav>
+	<div class="col-lg-4 formStyle p-4" id="form">
+		<h1> Phone Recharge </h1>
+		<div class="form-group">
+			<table class="text-center d-flex justify-content-center p-2">
+				<tr>
+					<td><img class="m-1" src="/img/iam.jpg" height="100" width="150"/></td>
+					<td><img class="m-1" src="/img/orange.png" height="100" width="100"/></td>
+					<td><img class="m-1" src="/img/inwi.jpeg" height="100" width="100"/></td>
+				</tr>
+				<tr>
+					<td><input class="form-check-input" type="radio" name="operator" id="iam" value="Maroc Telecom" checked></td>
+					<td><input class="form-check-input" type="radio" name="operator" id="orange" value="Orange"></td>
+					<td><input class="form-check-input" type="radio" name="operator" id="inwi" value="Inwi"></td>
+				</tr>
+			</table>
+		</div>
+		<div class="form-group">
+			<label for="numTel">The phone number</label>: 
+			<input type="text" id="numTel" name="numTel" class="form-control" placeholder="0612345678" autofocus="autofocus" required/>
+		</div>
+		<div class="form-group">
+			<label for="amount">The amount of money </label> :
+			<div class="input-group">
+               	<select class="form-control" id="amount" name="amount">
+				  <option selected value="5">5</option>
+				  <option value="10">10</option>
+				  <option value="20">20</option>
+				  <option value="25">25</option>
+				  <option value="50">50</option>
+				  <option value="100">100</option>
+				  <option value="200">200</option>
+				</select>
+               	<div class="input-group-append">
+                   	<span class="input-group-text">DH</span>
+               	</div>
+           	</div>		
+		</div>
+		<div class="form-group d-flex justify-content-center p-2">
+			<div class="form-check form-check-inline">
+			  <input class="form-check-input" type="radio" name="typeRecharge" id="phone" value="Phone" checked>
+			  <label class="form-check-label" for="typeRecharge">Phone</label>
+			</div>
+			<div class="form-check form-check-inline">
+			  <input class="form-check-input" type="radio" name="typeRecharge" id="internet" value="Internet">
+			  <label class="form-check-label" for="typeRecharge">Internet</label>
+			</div>
+			<div class="form-check form-check-inline">
+			  <input class="form-check-input" type="radio" name="typeRecharge" id="special_offer" value="Special offer">
+			  <label class="form-check-label" for="typeRecharge">Special offer</label>
+			</div>
+		</div>
+		<div class="form-group">
+			<button type="submit" name="recharge" id="recharge"	class="btn btn-outline-success btn-block mb-4" value="Recharge">Recharge</button>
+		</div>
+		<div id="erreur">
+		</div>
+	</div>
+	<div class="col-lg-4 formStyle p-4 text-center" id="result">
+	</div>
+	<script src="/js/jquery-3.3.1.min.js"></script>
+	<script src="/js/phone_recharge.js"></script>
+</body>
+</html>
